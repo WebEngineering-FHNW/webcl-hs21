@@ -33,19 +33,19 @@
         }
 
         /* todo: make a rainbow-colored shadow by blurring a positioned background */
+
         .rainbow::before {
             content: "";
-            background: linear-gradient(90deg,blue,green,yellow,orange,red,purple);
+            background: linear-gradient(90deg, blue, green, yellow, orange, red, violet);
+            filter: blur(.3em);
             position: absolute;
-            top:    -.5em;
-            bottom: -.5em;
-            left:   -.5em;
-            right:  -.5em;
+            top:    -.3em;
+            bottom: -.3em;
+            left:   -.3em;
+            right:  -.3em;
             z-index: -1;
             border-radius: 2em;
-            filter: blur(.3em);
         }
-
 
     </style>
 </head>

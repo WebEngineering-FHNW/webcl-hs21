@@ -1,8 +1,10 @@
 import { ObservableList, Observable }                       from "../observable/observable.js";
-import { Attribute, LABEL }                                 from "../presentationModel/presentationModel.js";
-import { personListItemProjector, personFormProjector }     from "./personProjector.js";
+import { Attribute, LABEL }                       from "../presentationModel/presentationModel.js";
+import { personListItemProjector, formProjector } from "./personProjector.js";
 
 export { MasterController, MasterView, SelectionController, DetailView }
+
+const ALL_PERSON_ATTRIBUTE_NAMES = ["firstname", "lastname"];
 
 const Person = () => {                               // facade
     const firstnameAttr = Attribute("Monika");
@@ -67,7 +69,7 @@ const SelectionController = () => {
 const DetailView = (selectionController, rootElement) => {
 
     const render = person =>
-        personFormProjector(selectionController, rootElement, person);
+        formProjector(selectionController, rootElement, person, ALL_PERSON_ATTRIBUTE_NAMES);
 
     selectionController.onPersonSelected(render);
 };
