@@ -5,6 +5,9 @@ const Observable = value => {
     const listeners = [];
     return {
         onChange: callback => {
+            if (listeners.length > 10) {
+                console.error("Listener count: ", listeners.length); // for debug purposes
+            }
             listeners.push(callback);
             callback(value, value);
         },
