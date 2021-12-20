@@ -1,13 +1,13 @@
 
-export {Observable, ObservableList}
+export {Observable, ObservableList, _lastListenerCount }
+
+let _lastListenerCount = 0; // for debug/test purposes only
 
 const Observable = value => {
     const listeners = [];
     return {
         onChange: callback => {
-            if (listeners.length > 10) {
-                console.error("Listener count: ", listeners.length); // for debug purposes
-            }
+            _lastListenerCount = listeners.length;  // for debug/test purposes only
             listeners.push(callback);
             callback(value, value);
         },
