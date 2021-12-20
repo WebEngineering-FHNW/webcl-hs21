@@ -19,7 +19,7 @@ personSuite.add("crud", assert => {
     // create the sub-views, incl. binding
 
     MasterView(masterController, selectionController, masterContainer);
-    DetailView(selectionController, detailContainer);
+    DetailView(masterController, selectionController, detailContainer);
 
     const elementsPerRow = 1;
 
@@ -56,7 +56,7 @@ personSuite.add("memleak", assert => {
     // create the sub-views, incl. binding
 
     MasterView(masterController, selectionController, masterContainer);
-    DetailView(selectionController, detailContainer);
+    DetailView(masterController, selectionController, detailContainer);
 
     const elementsPerRow = 1;
     const inputsPerRow   = 3;
