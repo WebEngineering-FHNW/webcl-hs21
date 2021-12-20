@@ -20,24 +20,24 @@ personSuite.add("crud", assert => {
     MasterView(masterController, selectionController, masterContainer);
     DetailView(selectionController, detailContainer);
 
-    const elementsPerRow = 3;
+    const elementsPerRow = 1;
 
     assert.is(masterContainer.children.length, 0*elementsPerRow);
 
     masterController.addModel();
 
-    assert.is(masterContainer.children.length, 1*elementsPerRow);
+    assert.is(masterContainer.querySelectorAll("tr").length - 1 , 1*elementsPerRow);
 
     masterController.addModel();
 
-    assert.is(masterContainer.children.length, 2*elementsPerRow);
+    assert.is(masterContainer.querySelectorAll("tr").length - 1 , 2*elementsPerRow);
 
     const firstInput = masterContainer.querySelectorAll("input[type=text]")[0];
     const firstDeleteButton = masterContainer.querySelectorAll("button")[0];
 
     firstDeleteButton.click();
 
-    assert.is(masterContainer.children.length, 1*elementsPerRow);
+    assert.is(masterContainer.querySelectorAll("tr").length - 1 , 1*elementsPerRow);
 
 
 });
