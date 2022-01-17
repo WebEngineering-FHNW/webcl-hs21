@@ -10,10 +10,13 @@
 
     <style>
         *, *::before, *::after {
+            box-sizing:     border-box;
             margin:         0;
             padding:        0;
-            box-sizing:     border-box;
+        }
+        :root {
             font-family:    ui-sans-serif, sans-serif;
+            --color-back:   hsl(280, 30%, 20%);
         }
         body {
             display:         flex;
@@ -23,9 +26,7 @@
             background:      yellow;
             background:      var(--color-back);
         }
-        :root {
-            --color-back:   hsl(280, 30%, 20%);
-        }
+
        nav {
            --nav-height:    70px;
            --item-count:    5;
@@ -186,6 +187,7 @@
     </nav>
 
 </header>
+
 <main>
 
 
@@ -193,13 +195,14 @@
 
 <script>
     const list = document.querySelectorAll(".list");
-    function activeLink() {
-        list.forEach( item =>{
-            item.classList.remove("active");
-            this.classList.add("active");
-        });
-    }
-    list.forEach( item => item.addEventListener("click", activeLink));
+    const activeLink = selectedItem =>
+        list.forEach( item =>
+            (item === selectedItem)
+            ? selectedItem.classList   .add("active")
+            : item        .classList.remove("active")
+        );
+
+    list.forEach( item => item.addEventListener("click", _ => activeLink(item) ));
 </script>
 
 </body>
